@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KriShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .navbar-brand {
+            color: red;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .form-control {
+            background-color: white;
+            color: #212529;
+        }
+
+        .navbar .nav-link,
+        .navbar .text-white {
+            color: red;
+            text-decoration: none red;
+        }
+
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+
+        .sidebar {
+            background-color: #ffffff;
+            border-right: 1px solid #dee2e6;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.1s;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .view-details {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: red;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover .view-details {
+            opacity: 1;
+        }
+
+        .btn-danger {
+            background-color: red;
+            border-color: red;
+        }
+
+        .btn-danger:hover {
+            background-color:red;
+            border-color: red;
+        }
+
+        .page-link {
+            color: red;
+        }
+
+        .page-item.active .page-link {
+            background-color: red;
+            border-color: red;
+        }
+
+        .form-check-label,
+        .form-check-input,
+        .list-unstyled li,
+        .page-link,
+        .btn {
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg px-4 py-2">
+        <a class="navbar-brand" href="#">
+            KriShop
+        </a>
+        <div class="ms-auto d-flex align-items-center gap-3">
+            <input class="form-control form-control-sm" type="search" placeholder="Search" />
+            <a href="#" class="text-white"><img src="https://whatemoji.org/wp-content/uploads/2020/07/Shopping-Cart-Emoji.png" height="30px"></a>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+
+            <aside class="col-md-3 sidebar p-3">
+                <h5>Categories</h5>
+                <ul class="list-unstyled">
+                    <li><input type="checkbox" class="form-check-input me-1" /> Cardio Equipment</li>
+                    <li><input type="checkbox" class="form-check-input me-1" /> Strength Training Equipment</li>
+                    <li><input type="checkbox" class="form-check-input me-1" /> Flexibility and Recovery Equipment</li>
+                </ul>
+
+                <h5>Price</h5>
+                <div class="d-flex gap-2 mb-3">
+                    <input type="number" class="form-control form-control-sm" placeholder="Min" />
+                    <input type="number" class="form-control form-control-sm" placeholder="Max" />
+                </div>
+
+                <h5>Brands</h5>
+                <div>
+                    <input type="checkbox" class="form-check-input me-1" /> Life Fitness <br />
+                    <input type="checkbox" class="form-check-input me-1" /> Precor <br />
+                    <input type="checkbox" class="form-check-input me-1" /> Technogym <br />
+                    <input type="checkbox" class="form-check-input me-1" /> Bowflex
+
+                </div>
+            </aside>
+
+            <main class="col-md-9">
+                <div class="row g-4">
+
+                    <script>
+                        const memes = [
+                            { title: "Dumbbell", img: "https://static.vecteezy.com/system/resources/thumbnails/009/350/781/small_2x/two-barbell-3d-element-png.png" },
+                            { title: "Threadmill", img: "https://pngimg.com/uploads/treadmill/treadmill_PNG22.png" },
+                            { title: "Lat Pulldown Machine", img: "https://static.vecteezy.com/system/resources/previews/023/220/685/non_2x/3d-rendered-lat-pulldown-machine-perfect-for-fitness-design-project-png.png" },
+                            { title: "Resistance Band", img: "https://th.bing.com/th/id/OIP.wzEirmLAVz_L2GsPViDChAAAAA?cb=iwc1&rs=1&pid=ImgDetMain" },
+                            { title: "Shoulder Press Machine", img: "https://th.bing.com/th/id/OIP.qd6RnXZ8U20qCYPv19mN_QHaHa?cb=iwc1&rs=1&pid=ImgDetMain" },
+                            { title: "Plate (45.3KG)", img: "https://th.bing.com/th/id/OIP.ZypY6P68L-T8g4QEifMIBgHaHZ?cb=iwc1&rs=1&pid=ImgDetMain" },
+                            { title: "Olympic Bar (20KG)", img: "https://th.bing.com/th/id/OIP.tYKhW1UwUcmSVI5W0ez6rgAAAA?cb=iwc1&rs=1&pid=ImgDetMain" },
+                            { title: "Leg Press Machine", img: "https://th.bing.com/th/id/OIP.1BJvL7TmfgUE0CA6GqSETAHaFl?cb=iwc1&rs=1&pid=ImgDetMain" }
+                        ];
+                        document.write(memes.map(m => `
+              <div class="col-12 col-sm-6 col-lg-3">
+                <div class="product-card p-2">
+                  <div class="position-relative">
+                    <img src="${m.img}" alt="${m.title}" />
+                    <div class="view-details">View Details</div>
+                  </div>
+                  <div class="mt-2">
+                    <h6 class="text-danger">${m.title}</h6>
+                    <p class="mb-1">$10.99</p>
+                    <button class="btn btn-sm btn-danger">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            `).join(''));
+                    </script>
+
+                </div>
+
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">></a></li>
+                    </ul>
+                </nav>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
